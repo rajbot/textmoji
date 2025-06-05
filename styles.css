@@ -116,7 +116,7 @@ input[type="range"] {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-#download-btn {
+#download-btn, .action-button {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -127,6 +127,29 @@ input[type="range"] {
     transition: background-color 0.2s;
 }
 
-#download-btn:hover {
+#download-btn:hover, .action-button:hover {
     background-color: #45a049;
+}
+
+.action-button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+/* Styles for font select with many options */
+#font-select {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.font-button-container {
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+}
+
+#load-fonts-btn {
+    width: 100%;
+    margin-bottom: 5px;
 }
