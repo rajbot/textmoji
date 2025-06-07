@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextMoji</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>TextMoji</h1>
+        <div class="editor">
+            <div class="input-section">
+                <div class="text-inputs">
+                    <input type="text" id="line1" maxlength="4" placeholder="Line 1 (max 4 chars)">
+                    <input type="text" id="line2" maxlength="4" placeholder="Line 2 (max 4 chars)">
+                </div>
+                
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="font-select">Font:</label>
+                        <select id="font-select">
+                            <option value="Arial">Arial</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Impact">Impact</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="text-color">Text Color:</label>
+                        <input type="color" id="text-color" value="#FFFFFF">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="bg-color">Background Color:</label>
+                        <input type="color" id="bg-color" value="#FF5733">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="font-size">Font Size:</label>
+                        <input type="range" id="font-size" min="10" max="80" value="40">
+                        <span id="font-size-value">40px</span>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="padding">Padding:</label>
+                        <input type="range" id="padding" min="2" max="20" value="14">
+                        <span id="padding-value">14px</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <canvas id="emoji-canvas" width="128" height="128"></canvas>
+                <button id="download-btn">Download Emoji</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
