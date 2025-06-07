@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const fontSizeValue = document.getElementById('font-size-value');
     const paddingInput = document.getElementById('padding');
     const paddingValue = document.getElementById('padding-value');
+    const lineSpacingInput = document.getElementById('line-spacing');
+    const lineSpacingValue = document.getElementById('line-spacing-value');
+    const cornerRadiusInput = document.getElementById('corner-radius');
+    const cornerRadiusValue = document.getElementById('corner-radius-value');
     const downloadBtn = document.getElementById('download-btn');
     
     // Initial render
@@ -31,11 +35,21 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSliderValues();
         renderEmoji();
     });
+    lineSpacingInput.addEventListener('input', () => {
+        updateSliderValues();
+        renderEmoji();
+    });
+    cornerRadiusInput.addEventListener('input', () => {
+        updateSliderValues();
+        renderEmoji();
+    });
     downloadBtn.addEventListener('click', downloadEmoji);
     
     function updateSliderValues() {
         fontSizeValue.textContent = `${fontSizeInput.value}px`;
         paddingValue.textContent = `${paddingInput.value}px`;
+        lineSpacingValue.textContent = lineSpacingInput.value;
+        cornerRadiusValue.textContent = `${cornerRadiusInput.value}px`;
     }
     
     function renderEmoji() {
@@ -50,10 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const bgColor = bgColorInput.value;
         const fontSize = parseInt(fontSizeInput.value);
         const padding = parseInt(paddingInput.value);
+        const lineSpacing = parseFloat(lineSpacingInput.value);
+        const cornerRadius = parseInt(cornerRadiusInput.value);
         
         // Calculate background size based on padding
         const bgSize = canvas.width - (padding * 2);
-        const cornerRadius = Math.min(20, padding + 5);
         
         // Draw background
         ctx.fillStyle = bgColor;
@@ -67,10 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Position text based on whether we have 1 or 2 lines
         if (line1 && line2) {
-            // Two lines of text - space them apart based on font size
-            const lineSpacing = fontSize * 0.8;
-            ctx.fillText(line1, canvas.width / 2, canvas.height / 2 - lineSpacing / 2);
-            ctx.fillText(line2, canvas.width / 2, canvas.height / 2 + lineSpacing / 2);
+            // Two lines of text - space them apart based on font size and lineSpacing factor
+            const spaceBetweenLines = fontSize * lineSpacing;
+            ctx.fillText(line1, canvas.width / 2, canvas.height / 2 - spaceBetweenLines / 2);
+            ctx.fillText(line2, canvas.width / 2, canvas.height / 2 + spaceBetweenLines / 2);
         } else if (line1) {
             // Just line 1
             ctx.fillText(line1, canvas.width / 2, canvas.height / 2);
